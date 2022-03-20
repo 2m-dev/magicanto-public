@@ -1,0 +1,465 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+@import './reset.css';
+body {
+  width: 100%;
+  background: linear-gradient(271deg, #efefef, transparent);
+  font-family: "Montserrat", 'Noto Sans JP', "游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif";
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+header {
+  position: fixed;
+  top: 80px;
+  left: 100px;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  transition: all 0.5s;
+}
+header h1#site--title {
+  width: 100px;
+  transition: all 0.5s;
+}
+header h1#site--title a {
+  display: flex;
+  flex-direction: column;
+  color: #111;
+}
+header h1#site--title a .cls-1 {
+  fill: none;
+  stroke: #111;
+  stroke-miterlimit: 10;
+}
+header h1#site--title a div {
+  display: flex;
+  justify-content: space-between;
+}
+header h1#site--title a span {
+  font-size: 11px;
+}
+footer {
+  width: 100%;
+  display: block;
+  background: linear-gradient(271deg, #210846, #04778e);
+  background-repeat: no-repeat;
+}
+footer div {
+  height: 100px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+footer p {
+  line-height: 1.1;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Montserrat';
+}
+.wrap {
+  margin: 0 auto;
+  padding: 20vh 100px 0px 100px;
+  transition: all 0.5s;
+}
+@media screen and (max-width: 1200px) {
+  .wrap {
+    padding: 0px 10px 0px 10px;
+  }
+}
+main {
+  margin: 0 auto;
+  max-width: 1040px;
+  min-height: 100vh;
+}
+@media screen and (max-width: 1200px) {
+  main {
+    margin: 80px auto 0px;
+    width: 100%;
+  }
+}
+.article--header {
+  max-width: 900px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.5);
+  background: transparent;
+}
+.article--header h1.title {
+  padding: 50px 25px;
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+}
+.article--header .thumb {
+  width: 100%;
+}
+.article--header .thumb img {
+  width: 100%;
+  opacity: 0;
+}
+.article--header .category {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+.article--header .category li {
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 3px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.article--header .category li img {
+  filter: grayscale(50%);
+}
+.article--content {
+  max-width: 900px;
+  padding: 15px;
+  margin: 0 auto 60px;
+  background: rgba(255,255,255,0.5);
+  background: transparent;
+  overflow: hidden;
+}
+.article--content > * {
+  word-break: break-word;
+}
+.article--content .nuxt-content-highlight {
+  margin-bottom: 25px;
+}
+.article--content > p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  display: block;
+}
+.article--content > p code {
+  background: #efefef;
+  border: 1px solid #aaa;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: "Montserrat", 'Noto Sans JP', "游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif";
+}
+.article--content img {
+  opacity: 0;
+}
+.article--content h1 {
+  padding: 50px 25px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+.article--content h2,
+.article--content h3,
+.article--content h4,
+.article--content h5,
+.article--content h6 {
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+.article--content h2 {
+  border-left: 3px solid #222;
+  padding-left: 10px;
+  font-size: 26px;
+}
+@media screen and (max-width: 1200px) {
+  .article--content h2 {
+    font-size: 22px;
+  }
+}
+.article--content h3 {
+  padding-left: 10px;
+  background: rgba(30,30,30,0.8);
+  color: #fff;
+  font-size: 24px;
+}
+@media screen and (max-width: 1200px) {
+  .article--content h3 {
+    font-size: 20px;
+  }
+}
+.article--content h4 {
+  font-size: 22px;
+}
+@media screen and (max-width: 1200px) {
+  .article--content h4 {
+    font-size: 20px;
+  }
+}
+.article--content h5 {
+  font-size: 20px;
+}
+@media screen and (max-width: 1200px) {
+  .article--content h5 {
+    font-size: 18px;
+  }
+}
+.article--content h6 {
+  font-size: 18px;
+}
+@media screen and (max-width: 1200px) {
+  .article--content h6 {
+    font-size: 18px;
+  }
+}
+.article--content p {
+  font-size: 16px;
+  margin: 0 0 25px 0;
+}
+.article--content > blockquote {
+  margin-bottom: 25px;
+  background: rgba(230,230,230,0.8);
+  color: #1e1e1e;
+  padding: 15px;
+}
+.article--content > blockquote p:last-child {
+  margin-bottom: 0;
+}
+.article--content > ul {
+  width: 100%;
+  margin-bottom: 25px;
+}
+.article--content > ul li {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+.article--content > ul li p {
+  margin-bottom: 0;
+}
+.article--content > table {
+  width: 100%;
+  margin-bottom: 25px;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  table-layout: fixed;
+}
+.article--content > table th,
+.article--content > table td {
+  padding: 10px;
+  border: 1px solid #eee;
+  min-width: 200px;
+}
+@media screen and (max-width: 1200px) {
+  .article--content > table th,
+  .article--content > table td {
+    min-width: 0px;
+  }
+}
+.article--content > table tr:hover {
+  background-color: rgba(230,241,255,0.8);
+}
+.article--content hr {
+  margin: 25px 0px;
+}
+.article--content section {
+  margin-bottom: 80px;
+}
+.article--content .remark-code-title {
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  padding: 3px 7px;
+  color: #eee;
+}
+.article--content div.iframe {
+  position: relative;
+  padding-top: 62.5%;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.article--content div.iframe iframe {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.article--content div.twitter-tweet {
+  margin: 0 auto;
+}
+.nuxt-content-highlight {
+  position: relative;
+}
+.nuxt-content-highlight span.filename {
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+  right: 0;
+  background: #111;
+  color: #eee;
+  padding: 2px;
+  border-radius: 0px 0.3em;
+}
+pre[class*="language-"].line-numbers {
+  padding-left: 0em;
+}
+.article--content a::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+.article--content a:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.article--content a::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: linear-gradient(271deg, #f00, #04ff04, #efff00);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+.article--content a:hover {
+  text-decoration: none;
+}
+.article--content a,
+.article--content a:visited {
+  position: relative;
+  color: #0089ff;
+  font-weight: 500;
+}
+.article--list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+li.card {
+  display: block;
+  width: 47%;
+  position: relative;
+  margin-top: 30px;
+  overflow: hidden;
+}
+@media screen and (max-width: 1200px) {
+  li.card {
+    width: 100%;
+  }
+}
+li.card a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #111;
+  padding: 0px;
+  transition: all 0.4s;
+}
+li.card a:hover {
+  background: rgba(50,50,50,0);
+}
+li.card a:hover .date,
+li.card a:hover h2.title {
+  color: #00ffa3;
+}
+li.card a figure {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+li.card a figure img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 1s;
+  opacity: 0;
+}
+li.card a figure img:hover {
+  transform: scale(1.1);
+}
+li.card a h2.title {
+  font-size: 16px;
+  overflow: hidden;
+  max-height: 3.2rem;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+li.card a .date {
+  font-size: 13px;
+  text-align: right;
+  color: #111;
+  font-weight: bold;
+  position: absolute;
+  bottom: 8px;
+  left: 0px;
+}
+li.card a .info {
+  width: calc(100%);
+}
+li.card a .category {
+  position: absolute;
+  bottom: 5px;
+  display: flex;
+}
+li.card a .category li {
+  width: 30px;
+  height: 30px;
+  background: #333;
+  border-radius: 3px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+li.card a .category li img {
+  filter: grayscale(50%);
+}
+@media screen and (max-width: 1200px) {
+  li.card a .category {
+    position: absolute;
+    bottom: 0;
+  }
+  li.card a .category li {
+    width: 30px;
+    height: 30px;
+    background: #333;
+    border-radius: 3px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+  }
+  li.card a .category li img {
+    filter: grayscale(50%);
+  }
+}
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.canvas__body {
+  width: 100%;
+  height: 100%;
+}
