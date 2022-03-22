@@ -1,1 +1,89 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>MAGICANTO</title><link rel=stylesheet href=/css/style.css></head><body><header><h1 id=site--title><a href=/><figure><img src=/img/logo.svg alt></figure><div><span>M</span><span>A</span><span>G</span><span>I</span><span>C</span><span>A</span><span>N</span><span>T</span><span>O</span></div></a></h1></header><div class=wrap><main class=article--wrap><div class=article--header><h1 class=title>Hugo My Manual</h1><figure class=thumb><img src=/articles/article-1/thumbnail.png></figure></div><div class=article--content></div></main></div><footer><div><p>Copyright © 2022- MAGICANTO</p></div></footer><div class=canvas><canvas id=canvas class=canvas__body></canvas></div><script src=/js/bundle.js></script></body></html>
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo My Manual | MAGICANTO</title><link rel=stylesheet href=/css/style.css><meta name=theme-color content="#48504a"></head><body><header><h1 id=site--title><a href=/><figure><img src=/img/logo.svg alt></figure><div><span>M</span><span>A</span><span>G</span><span>I</span><span>C</span><span>A</span><span>N</span><span>T</span><span>O</span></div></a></h1></header><div class=wrap><main class=article--wrap><div class=article--header><h1 class=title>Hugo My Manual</h1><figure class=thumb><img src=/articles/article-1/thumbnail.png></figure></div><aside class=toc--aside><h5>目次</h5><nav id=TableOfContents><ul><li><a href=#環境仕様>環境仕様</a></li><li><a href=#環境構築>環境構築</a><ul><li><a href=#-hugo-ローカル環境作成>① Hugo ローカル環境作成</a></li><li><a href=#-github-環境作成>② Github 環境作成</a></li><li><a href=#-github-actionsの設定>③ Github Actionsの設定</a></li><li><a href=#-google-domainsにdns設定を追加する>④ Google DomainsにDNS設定を追加する。</a></li><li><a href=#-github-pagesにカスタムドメインの割り当て>⑤ Github Pagesにカスタムドメインの割り当て</a></li></ul></li><li><a href=#hugo-テーマ編集>Hugo テーマ編集</a><ul><li><a href=#-contentへ記事の追加>① contentへ記事の追加</a></li><li><a href=#-目次の追加>② 目次の追加</a></li><li><a href=#ページタイトルの追加>ページタイトルの追加</a></li></ul></li><li><a href=#その他>その他</a><ul><li><a href=#vscode-mdファイルの自動整形を無効化>VSCode .mdファイルの自動整形を無効化</a></li></ul></li></ul></nav></aside><button id=toc--toggle>開閉</button><div class=article--content><p>ブログを構築する。</p><h2 id=環境仕様>環境仕様</h2><table><thead><tr><th>項目</th><th>概要</th></tr></thead><tbody><tr><td>ドメイン</td><td>Google Domainsで取得した<code>magicanto.com</code>を使用</td></tr><tr><td>CMS</td><td>Hugo</td></tr><tr><td>バージョン管理</td><td>Git</td></tr><tr><td>ホスティング</td><td>Github Pages</td></tr><tr><td>CI/CD</td><td>Github Actions</td></tr></tbody></table><p>構成がわかりづらいので可愛い鳥獣戯画で図解しておく。</p><p><img src=/articles/article-1/figure-1.png alt=図></p><h2 id=環境構築>環境構築</h2><h3 id=-hugo-ローカル環境作成>① Hugo ローカル環境作成</h3><p><a href=https://gohugo.io/getting-started/installing/>Install Hugo</a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>hugo new site .
+</span></span></code></pre></div><p>下記、インストール直後。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span>C:\Hugo
+</span></span><span style=display:flex><span>├─archetypes
+</span></span><span style=display:flex><span>├─content
+</span></span><span style=display:flex><span>├─data
+</span></span><span style=display:flex><span>├─layouts
+</span></span><span style=display:flex><span>├─static
+</span></span><span style=display:flex><span>├─themes
+</span></span><span style=display:flex><span>└─config.toml
+</span></span></code></pre></div><p><code>config.toml</code>、<code>content</code>、<code>themes</code>、以外は触らない。
+<code>config.toml</code>に環境設定、<code>content</code>に記事、<code>themes</code>にテーマをそれぞれ作成する。</p><h4 id=テーマ作成>テーマ作成</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd themes
+</span></span><span style=display:flex><span>hugo new theme magicanto
+</span></span></code></pre></div><h4 id=検証サーバ起動>検証サーバ起動</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>hugo server -D
+</span></span></code></pre></div><h4 id=ローカルにデプロイ>ローカルにデプロイ</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>hugo
+</span></span></code></pre></div><h4 id=configの設定変更>configの設定変更</h4><p>それぞれ値変更と、markdown内へのHTMLの記述を許可する設定を記述しておく。</p><p>config.toml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span><span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#39;https://magicanto.com/&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#39;ja-jp&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#39;MAGICANTO&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>theme</span> = <span style=color:#e6db74>&#34;magicanto&#34;</span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>markup</span>]
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>]
+</span></span><span style=display:flex><span>    [<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>.<span style=color:#a6e22e>renderer</span>]
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>unsafe</span> = <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><h3 id=-github-環境作成>② Github 環境作成</h3><p><img src=/articles/article-1/figure-2.png alt=図></p><p>PublicとPrivateを1つずつ作る。<br>ファイルはPrivateリポジトリにPushする想定</p><table><thead><tr><th>種類</th><th>リポジトリ名</th></tr></thead><tbody><tr><td>private</td><td>magicanto</td></tr><tr><td>public</td><td>magicanto-public</td></tr></tbody></table><h3 id=-github-actionsの設定>③ Github Actionsの設定</h3><h4 id=sshkeyの作成>sshkeyの作成</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh-keygen -t rsa
+</span></span></code></pre></div><p><code>C:\Users\[username]\.ssh</code>に<code>id_rsa(秘密鍵)</code>と<code>id_rsa.pub(公開鍵)</code>が生成される。</p><h4 id=公開鍵秘密鍵をそれぞれ登録>公開鍵、秘密鍵をそれぞれ登録</h4><p>PrivateリポジトリにHugo構成一式をPushしてGithub Actionsを使用するため、<br>リポジトリメニュー<code>Setting > Security > Secrets > Actions</code>に作成したsshkey秘密鍵(id_rsa)の中身を貼り付けて登録する。
+Key Nameは「ACTIONS_DEPLOY_KEY」とする。</p><p>PrivateリポジトリからPublicリポジトリにデプロイするために、PublicリポジトリにDeploy Keyを登録する。<br>メニュー<code>Setting > Security > Deploy keys</code>に作成したsshkey公開鍵(id_rsa)の中身を貼り付けて登録する。<br>Titleは「ACTIONS_DEPLOY_KEY」とする。
+また、「Allow write access」にチェックを入れる。</p><table><thead><tr><th>種類</th><th>概要</th></tr></thead><tbody><tr><td>privateリポジトリ</td><td><code>Setting > Security > Secrets > Actions</code><br>Key Name「ACTIONS_DEPLOY_KEY」</td></tr><tr><td>publicリポジトリ</td><td><code>Setting > Security > Deploy keys</code><br>Title「ACTIONS_DEPLOY_KEY」<br>「Allow write access」にチェック</td></tr></tbody></table><p>.github/workflows/gh-pages.yml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>github pages</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>main</span> <span style=color:#75715e># Set a branch to deploy</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pull_request</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-20.04</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v2</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span> <span style=color:#75715e># Fetch Hugo themes (true OR recursive)</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span> <span style=color:#75715e># Fetch all history for .GitInfo and .Lastmod</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#34;latest&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#75715e># extended: true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>if</span>: <span style=color:#ae81ff>github.ref == &#39;refs/heads/main&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>deploy_key</span>: <span style=color:#ae81ff>${{ secrets.ACTIONS_DEPLOY_KEY }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>2m-dev/magicanto-public</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>cname</span>: <span style=color:#ae81ff>magicanto.com</span>
+</span></span></code></pre></div><table><thead><tr><th>項目</th><th>概要</th></tr></thead><tbody><tr><td>deploy_key</td><td><code>ACTIONS_DEPLOY_KEY</code>は前述したDeploy KeyのTitle</td></tr><tr><td>publish_dir</td><td>これ必要かわからん</td></tr><tr><td>external_repository</td><td>publicリポジトリを指定</td></tr><tr><td>publish_branch</td><td>main</td></tr><tr><td>cname</td><td>これも必要かわからん</td></tr></tbody></table><p>これでPrivateリポジトリにPushするとPublicリポジトリにデプロイされる。</p><h4 id=action-failed-with-not-found-deploy-key-or-tokensが出た場合>Action failed with &ldquo;not found deploy key or tokens"が出た場合</h4><p>恐らくgh-pages.ymlのdeploy_keyが間違っている。<br>secrets.ACTIONS_DEPLOY_KEYの「ACTIONS_DEPLOY_KEY」と実際に登録したDeployKeyの名称は同じにしなければならない。</p><h3 id=-google-domainsにdns設定を追加する>④ Google DomainsにDNS設定を追加する。</h3><p><img src=/articles/article-1/figure-3.png alt=図></p><table><thead><tr><th>ホスト名</th><th>タイプ</th><th>データ</th></tr></thead><tbody><tr><td>空欄</td><td>Aレコード</td><td>185.199.108.153<br>185.199.109.153<br>185.199.110.153<br>185.199.111.153</td></tr><tr><td>www</td><td>CNAMEレコード</td><td>2m-dev.github.io.</td></tr></tbody></table><h3 id=-github-pagesにカスタムドメインの割り当て>⑤ Github Pagesにカスタムドメインの割り当て</h3><p><img src=/articles/article-1/figure-4.png alt=図></p><p>「Enforce HTTPS」はドメインが通ったあとチェックできるようになるのでチェック。</p><p>ここまでで環境構築は完了。</p><h2 id=hugo-テーマ編集>Hugo テーマ編集</h2><h3 id=-contentへ記事の追加>① contentへ記事の追加</h3><p>contentの中はPage Bundleを使った方法で作成する。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span>/content/
+</span></span><span style=display:flex><span>└─articles
+</span></span><span style=display:flex><span>  ├─article-0
+</span></span><span style=display:flex><span>  |  ├─index.md
+</span></span><span style=display:flex><span>  |  ├─thumbnail.png
+</span></span><span style=display:flex><span>  |  └─image1.jpg
+</span></span><span style=display:flex><span>  └─article-1
+</span></span><span style=display:flex><span>     ├─index.md
+</span></span><span style=display:flex><span>     └─thumbnail.png
+</span></span></code></pre></div><p><a href=https://gohugo.io/content-management/page-bundles/>Page Bundles</a></p><h3 id=-目次の追加>② 目次の追加</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>{{ if not .Params.notoc }}
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>aside</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;toc--aside&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>h5</span>&gt;目次&lt;/<span style=color:#f92672>h5</span>&gt;
+</span></span><span style=display:flex><span>  {{.TableOfContents}}
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>aside</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;toc--toggle&#34;</span>&gt;開閉&lt;/<span style=color:#f92672>button</span>&gt;
+</span></span><span style=display:flex><span>{{ end }}
+</span></span></code></pre></div><h3 id=ページタイトルの追加>ページタイトルの追加</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>title</span>&gt;
+</span></span><span style=display:flex><span>  {{ block &#34;title&#34; . }}
+</span></span><span style=display:flex><span>    {{if .IsPage }}{{.Page.Title}} | {{end}}
+</span></span><span style=display:flex><span>    {{if .IsSection }}{{.Page.Title}} | {{end}}
+</span></span><span style=display:flex><span>    {{ .Site.Title }}
+</span></span><span style=display:flex><span>  {{ end }}
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>title</span>&gt;
+</span></span></code></pre></div><h2 id=その他>その他</h2><h3 id=vscode-mdファイルの自動整形を無効化>VSCode .mdファイルの自動整形を無効化</h3><p>./vscode/setting.json</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;[markdown]&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;editor.formatOnSave&#34;</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></main></div><footer><div><p>Copyright © 2022- MAGICANTO</p></div></footer><div class=canvas><canvas id=canvas class=canvas__body></canvas></div><script src=/js/bundle.js></script></body></html>

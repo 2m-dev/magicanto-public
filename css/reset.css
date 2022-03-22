@@ -15,8 +15,8 @@ dl,
 dd {
   margin: 0;
 }
-ul[role='list'],
-ol[role='list'] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 pre {
@@ -71,4 +71,9 @@ body {
 }
 a {
   word-break: break-all;
+}
+
+::selection {
+  background: #000000;
+  color: #ffffff;
 }

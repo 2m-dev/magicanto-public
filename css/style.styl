@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
 @import './reset.css'
 
 body
@@ -37,6 +38,35 @@ header
         justify-content space-between
       span
         font-size 11px
+@media screen and (max-width : 1200px)
+  header
+    position fixed
+    top 15px
+    left 15px
+    display flex
+    align-items center
+    z-index 20
+    transition all .5s
+    h1#site--title
+      width auto
+      transition all .5s
+      a
+        display flex
+        flex-direction row
+        align-items center
+        color #111
+        img
+          width 50px
+        .cls-1
+          fill: none;
+          stroke: #111;
+          stroke-miterlimit: 10
+        div
+          margin-left 5px
+          display flex
+          justify-content space-between
+        span
+          font-size 12px
 
 
 // footer
@@ -81,7 +111,7 @@ main
 // content
 
 .article--header
-  max-width 900px
+  max-width 960px
   padding-bottom 15px
   margin 0 auto
   background rgba(255,255,255,.5)
@@ -113,28 +143,56 @@ main
       margin-left 5px
       img
         filter grayscale(50%)
+aside.toc--aside
+  right 0
+  top 0
+  margin 0 auto 40px
+  max-width 960px
+  h5
+    color #FFF
+    background #111
+    margin 0
+    padding 10px
+    text-align center
+  ul li
+    background #EEE
+    ul li a
+      padding-left 1.6rem
+    a
+      display block
+      padding 10px
+      color #111
+      font-size 16px
+      &:hover
+        background #CCC
+#toc--toggle
+  display none
 .article--content
-  max-width 900px
+  max-width 960px
   padding 15px
   margin 0 auto 60px
-  background rgba(255,255,255,.5)
+  font-family 'mulish', 'Noto Sans JP',"游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif"
+  // background rgba(255,255,255,.5)
   background transparent
   overflow hidden
   > *
     word-break break-word
   .nuxt-content-highlight
     margin-bottom 25px
-  > p
+  p
     font-size 14px
     line-height 1.8
     margin-bottom 25px
     display block
-    code
+  p code,td code
       background: #efefef;
       border: 1px solid #aaa;
-      padding: 2px 4px;
+      margin 0px 2px
+      padding: 0px 4px;
       border-radius: 3px;
-      font-family "Montserrat" ,'Noto Sans JP',"游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif"
+      font-family 'mulish','Noto Sans JP',"游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif"
+  pre
+    overflow-x auto
   img
     opacity 0
   h1
@@ -144,24 +202,32 @@ main
     text-align center
   h2,h3,h4,h5,h6
     margin 0 0 20px 0
-    font-weight 600
+    font-weight 500
   h2
-    border-left 3px solid #222
-    padding-left 10px
-    font-size 26px
-    @media screen and (max-width : 1200px)
-      font-size 22px
-  h3
-    padding-left 10px
-    background rgba(30,30,30,.8)
-    color #FFF
-    font-size 24px
-    @media screen and (max-width : 1200px)
-      font-size 20px
-  h4
+    margin-top 60px
+    border-bottom 2px solid #222
+    padding 10px
     font-size 22px
     @media screen and (max-width : 1200px)
       font-size 20px
+  > h2:nth-of-type(1)
+    margin-top 20px
+  h3
+    margin-top 40px
+    padding 10px
+    background rgba(60,60,60,.8)
+    color #FFF
+    font-size 18px
+    font-weight 500
+    @media screen and (max-width : 1200px)
+      font-size 18px
+  h4
+    margin-top 30px
+    font-size 18px
+    padding-left 10px
+    border-left 2px solid #222
+    @media screen and (max-width : 1200px)
+      font-size 18px
   h5
     font-size 20px
     @media screen and (max-width : 1200px)
@@ -169,7 +235,7 @@ main
   h6
     font-size 18px
     @media screen and (max-width : 1200px)
-      font-size 18px
+      font-size 16px
   p
     font-size 16px
     margin 0 0 25px 0
@@ -192,11 +258,12 @@ main
     width 100%
     margin-bottom 25px
     border-collapse collapse
-    border 1px solid #eee
+    border 1px solid #ddd
     table-layout fixed
+    background rgba(255,255,255,.5)
     th,td
       padding 10px
-      border 1px solid #eee
+      border 1px solid #ddd
       min-width 200px
       @media screen and (max-width : 1200px)
         min-width 0px
@@ -227,6 +294,8 @@ main
       left 0
   div.twitter-tweet
     margin 0 auto
+  .highlight pre
+    padding 10px
 .nuxt-content-highlight
   position relative
 .nuxt-content-highlight span.filename
