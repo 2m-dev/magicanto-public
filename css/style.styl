@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 @import './reset.css'
 
 body
   width 100%
   background linear-gradient(271deg, #efefef, transparent)
-  font-family "Montserrat" ,'Noto Sans JP',"游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif"
+  font-family "Rubik","Montserrat" ,'Noto Sans JP',"游ゴシック体", 'Yu Gothic', "YuGothic", 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', "メイリオ", "Meiryo", "Osaka", 'ＭＳ Ｐゴシック', 'MS PGothic', "sans-serif"
   min-height 100vh
   overflow-x hidden
   font-size 16px
@@ -23,12 +24,14 @@ header
   z-index 20
   transition all .5s
   h1#site--title
-    width 100px
+    width 80px
     transition all .5s
     a
       display flex
       flex-direction column
       color #111
+      img
+        margin-bottom 5px
       .cls-1
         fill: none;
         stroke: #111;
@@ -41,8 +44,8 @@ header
 @media screen and (max-width : 1200px)
   header
     position fixed
-    top 15px
-    left 15px
+    top 20px
+    left 20px
     display flex
     align-items center
     z-index 20
@@ -56,7 +59,8 @@ header
         align-items center
         color #111
         img
-          width 50px
+          width 55px
+          margin-bottom 0
         .cls-1
           fill: none;
           stroke: #111;
@@ -67,6 +71,28 @@ header
           justify-content space-between
         span
           font-size 12px
+
+// head-nav
+
+#head--nav
+  position fixed
+  top 100px
+  right 100px
+  z-index 30
+  ul
+    display flex
+    align-items center
+    li
+      margin-left 20px
+      a
+        font-weight bold
+        color #111
+  img
+    width 30px
+@media screen and (max-width : 1200px)
+  #head--nav
+    display none
+
 
 
 // footer
@@ -117,7 +143,7 @@ main
   background rgba(255,255,255,.5)
   background transparent
   h1.title
-    padding 50px 25px
+    padding 50px 25px 0px
     font-weight bold
     font-size 26px
     text-align center
@@ -143,6 +169,11 @@ main
       margin-left 5px
       img
         filter grayscale(50%)
+.article--info
+  max-width 960px
+  width 100%
+  text-align center
+  margin 30px auto
 aside.toc--aside
   right 0
   top 0
@@ -163,8 +194,10 @@ aside.toc--aside
       padding 10px
       color #111
       font-size 16px
+      transition all .3s
+      background #fefefe
       &:hover
-        background #CCC
+        background #f0f0f0
 #toc--toggle
   display none
 .article--content
@@ -201,10 +234,10 @@ aside.toc--aside
     font-size 20px
     text-align center
   h2,h3,h4,h5,h6
-    margin 0 0 20px 0
+    margin 0 0 25px 0
     font-weight 500
   h2
-    margin-top 60px
+    margin-top 80px
     border-bottom 2px solid #222
     padding 10px
     font-size 22px
@@ -222,7 +255,7 @@ aside.toc--aside
     @media screen and (max-width : 1200px)
       font-size 18px
   h4
-    margin-top 30px
+    margin-top 40px
     font-size 18px
     padding-left 10px
     border-left 2px solid #222
@@ -238,7 +271,7 @@ aside.toc--aside
       font-size 16px
   p
     font-size 16px
-    margin 0 0 25px 0
+    margin 0 0 20px 0
   > blockquote
     margin-bottom 25px
     background rgba(230,230,230,.8)
@@ -391,7 +424,7 @@ li.card
       -webkit-line-clamp 2
       -webkit-box-orient vertical
       font-weight 500
-      margin-bottom 30px
+      margin-bottom 0px
     .date
       font-size 13px
       text-align right
@@ -447,3 +480,51 @@ li.card
 .canvas__body 
   width 100%
   height 100%
+
+// loading
+
+#loading
+  position fixed
+  width 100%
+  height 100vh
+  z-index 100
+  bottom 0
+  left 0
+  opacity 1
+  display flex
+  flex-direction column
+  flex-wrap wrap
+  justify-content center
+  align-items center
+  background linear-gradient(271deg, #efefef, #fff)
+  .box
+    width 100px
+    height auto
+  figure
+    width 60px
+    margin 0 auto
+    display block
+    padding-bottom 20px
+    overflow hidden
+  .line
+    display block
+    height 1px
+    max-width 100px
+    background #299191
+    overflow hidden
+    &:after
+      content ""
+      display block
+      height 1px
+      width 100px
+      transform: translateX(-100px)
+      background #ddd
+      animation load1 1s infinite ease-in-out
+@-webkit-keyframes load1 {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
